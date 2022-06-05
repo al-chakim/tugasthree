@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-part 'locations.g.dart';
+//part 'locations.g.dart';
 
 @JsonSerializable()
 class LatLng {
@@ -13,10 +13,18 @@ class LatLng {
   });
 
   factory LatLng.fromJson(Map<String, dynamic> json) => _$LatLngFromJson(json);
-  Map<String, dynamic> toJson() => _$LatLngToJson(this);
+  _$LatLngToJson toJson() => _$LatLngToJson(this);
 
   final double lat;
   final double lng;
+}
+
+class _$LatLngToJson {
+  _$LatLngToJson(LatLng latLng);
+}
+
+class _$LatLngFromJson {
+  _$LatLngFromJson(Map<String, dynamic> json);
 }
 @JsonSerializable()
 class Region {
@@ -34,6 +42,12 @@ class Region {
   final String id;
   final String name;
   final double zoom;
+}
+
+_$RegionFromJson(Map<String, dynamic> json) {
+}
+
+_$RegionToJson(Region region) {
 }
 
 @JsonSerializable()
@@ -62,6 +76,13 @@ class Office {
   final String region;
 }
 
+_$OfficeToJson(Office office) {
+}
+
+class _$OfficeFromJson {
+  _$OfficeFromJson(Map<String, dynamic> json);
+}
+
 @JsonSerializable()
 class Locations {
   Locations({
@@ -75,6 +96,12 @@ class Locations {
 
   final List<Office> offices;
   final List<Region> regions;
+}
+
+_$LocationsToJson(Locations locations) {
+}
+
+_$LocationsFromJson(Map<String, dynamic> json) {
 }
 
 Future<Locations> getGoogleOffices() async {
